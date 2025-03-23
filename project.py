@@ -3,6 +3,7 @@ class my_class(object):
         print('ho is ho')
     pass
 
+print(1)
 
 
 
