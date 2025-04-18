@@ -3,13 +3,13 @@ class Project:
     def __init__(self):
         self.spisok = []
         self.harakteristika = dict()
-        self.flag = 0
+        self.flag = True
     
     def vvodimoe(self):
          while True:
             vvod = input()
             if vvod == 'Да':
-                print('Замечательно, в таком случае приступить!')
+                print('Замечательно, в таком случае приступим!')
                 break
             elif vvod == 'Нет':
                 print('Вы можете приступить когда пожелаете.')
@@ -18,29 +18,38 @@ class Project:
                 vvod = input()
                 if vvod == 'Да':
                     print('Спасибо за внимание и приятного дня!')
-                    flag = False
+                    self.flag = False
                     break
+                elif vvod == 'Нет':
+                    print('Прекрасно, в таком случае готовы ли вы начать выполнение теста?')
+                else:
+                    print('Возможно в ващем тексте допущена орфографическая ошибка. Попрбуйте ещё раз.')
             else:
                 print('Возможно в ващем тексте допущена орфографическая ошибка. Попрбуйте ещё раз.')
 
     def funck(self, piker):
-        while True:
-            a = input()
-            if a == 'Да':
-                self.harakteristika[piker] = 'Присутствует'
-                break
-            elif a == 'Нет':
-                self.harakteristika[piker] = 'Отсутствует'
-                break
-            elif a == 'Выйти':
-                print('Вы уверены что хотите завершить тест?')
+        if self.flag == True:
+            while True:
                 a = input()
                 if a == 'Да':
-                    print('Спасибо за внимание и приятного дня!')
-                    flag = False
+                    self.harakteristika[piker] = 'Присутствует'
                     break
-            else:
-                print('Возможно в ващем тексте допущена орфографическая ошибка. Попрбуйте ещё раз.')
+                elif a == 'Нет':
+                    self.harakteristika[piker] = 'Отсутствует'
+                    break
+                elif a == 'Выйти':
+                    print('Вы уверены что хотите завершить тест?')
+                    a = input()
+                    if a == 'Да':
+                        print('Спасибо за внимание и приятного дня!')
+                        self.flag = False
+                        break
+                    elif a == 'Нет':
+                        print('Прекрасно, в таком случае готовы ли вы начать выполнение теста?')
+                    else:
+                        print('Возможно в ващем тексте допущена орфографическая ошибка. Попрбуйте ещё раз.')
+                else:
+                    print('Возможно в ващем тексте допущена орфографическая ошибка. Попрбуйте ещё раз.')
 
     def vstuplenie(self):
         print(' __________________________________________________________________________________________________________________ ')
@@ -60,13 +69,16 @@ class Project:
         print('|__________________________________________________________________________________________________________________|')
 
     def chast_1(self):
-        print('Приступим.')
-        print('Можете ли вы назвать себя усидчивым человеком?')
-        p.funck('Усидчивость')
+        if self.flag == True:
+            print('Приступим.')
+            print('Можете ли вы назвать себя усидчивым человеком?')
+            p.funck('Усидчивость')
+            print('Нравится ли вам бывать ')
 
 
 p = Project()
-p.vstuplenie()
+if flag:
+    p.vstuplenie()
 if flag:
     p.znakomstvo_s_interfeisom()
 if flag:
